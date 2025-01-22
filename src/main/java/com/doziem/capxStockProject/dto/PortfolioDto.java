@@ -1,8 +1,6 @@
 package com.doziem.capxStockProject.dto;
 
 import com.doziem.capxStockProject.model.Portfolio;
-import lombok.Getter;
-import lombok.Setter;
 
 public class PortfolioDto {
     private Long id;
