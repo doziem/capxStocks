@@ -4,12 +4,35 @@ import com.doziem.capxStockProject.model.Portfolio;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
-@Getter
 public class PortfolioDto {
     private Long id;
     private String name;
     private UserDto user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public UserDto getUser() {
+        return user;
+    }
+
+    public void setUser(UserDto user) {
+        this.user = user;
+    }
+
 
     public static PortfolioDto fromPortfolioEntity(Portfolio portfolio) {
         PortfolioDto dto = new PortfolioDto();
