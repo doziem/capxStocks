@@ -15,19 +15,19 @@ public class Stock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = true)
     private String ticker;
 
     @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(nullable = true)
     private Integer quantity;
 
-    @Column
+    @Column(nullable = true)
     private Double buyPrice;
 
-    @Column
+    @Column(nullable = true)
     private Long volume;
 
     @ManyToOne
