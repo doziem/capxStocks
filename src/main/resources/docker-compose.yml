@@ -1,0 +1,65 @@
+#spring.application.name=capxStockProject
+#server.port=${PORT:8080}
+#server.address=0.0.0.0
+#
+#spring.datasource.url=jdbc:postgresql://localhost:5432/capxStocks
+#spring.datasource.username=postgres
+#spring.datasource.password=agbo1212#
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true
+#
+#spring.application.name=capxStockProject
+#server.port=8080
+#
+## Datasource Configuration
+#spring.datasource.url=jdbc:postgresql://db:5432/capxStocks
+#spring.datasource.username=postgres
+#spring.datasource.password=agbo1212#
+#spring.datasource.driver-class-name=org.postgresql.Driver
+#
+## JPA & Hibernate Configuration
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#spring.jpa.hibernate.ddl-auto=validate
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true
+#
+## Logging Configuration
+#logging.level.org.springframework.jdbc=DEBUG
+#logging.level.org.hibernate=DEBUG
+
+
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # Expose the app service on port 8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/capxStocks
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: agbo1212#
+    depends_on:
+      - db # Ensure the db service starts before app
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: agbo1212#
+      POSTGRES_DB: capxStocks
+    ports:
+      - "5432:5432" # Expose PostgreSQL on its default port
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persistent volume for data
+
+volumes:
+  postgres_data:
+    driver: local
+
+
+
